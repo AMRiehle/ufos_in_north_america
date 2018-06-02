@@ -46,6 +46,7 @@ var country_input = country_sel.options[country_sel.selectedIndex].value
 var shape_sel = document.getElementById('shape');
 var shape_input = shape_sel.options[shape_sel.selectedIndex].value
 var start_date = d3.select("#start_date").node().value;
+var end_date = d3.select("#end_date").node().value;
 d3.select("tbody").remove()
 d3.select("table").append("tbody")
   var tbody = d3.select("tbody");
@@ -59,36 +60,328 @@ d3.select("table").append("tbody")
     var shape = filteredData[i]["shape"];
     var duration = filteredData[i]["durationMinutes"];
     var comments = filteredData[i]["comments"];
-    if (city_input != "") {
-    if (city_input.toLowerCase() == city) {
-      if (state_input == "") {
+    if (start_date != "" && end_date != "" && city_input != "" && state_input != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
         writeData(i);
+      }
     }
-    else if (city_input.toLowerCase() == city && state_input.toLowerCase() == state) {
+      else if (start_date != "" && end_date != "" && city_input != "" && state_input != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && end_date != "" && city_input != "" && state_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && end_date != "" && city_input != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && end_date != "" && city_input != "" && state_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && end_date != "" && state_input != "" && state_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && state_input.toLowerCase() == state && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && city_input != "" && state_input != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (end_date != "" && city_input != "" && state_input != "" && country_input != "default" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && end_date != "" && city_input != "" && state_input != "") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    }  
+      else if (start_date != "" && end_date != "" && city_input != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && country_input == country) {
+        writeData(i);
+      }
+    }    
+      else if (start_date != "" && end_date != "" && city_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city && shape_input == shape) {
+        writeData(i);
+      }
+    }  
+      else if (start_date != "" && end_date != "" && state_input != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    }    
+      else if (start_date != "" && end_date != "" && state_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && end_date != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && city_input != "" && state_input != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && city_input != "" && state_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && city_input != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && state_input != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && city_input != "" && state_input != "" && country_input != "default") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && city_input != "" && state_input != "" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && city_input != "" && country_input != "default" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && state_input != "" && country_input != "default" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (city_input != "" && state_input != "" && country_input != "default" && shape_input != "default") {
+      if (city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && end_date != "" && city_input != "") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && city_input.toLowerCase() == city) {
+        writeData(i);
+      }
+    }  
+      else if (start_date != "" && end_date != "" && state_input != "") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    }  
+      else if (start_date != "" && end_date != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && country_input == country) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && end_date != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime) && shape_input == shape) {
+        writeData(i);
+      }
+    }           
+      else if (start_date != "" && city_input != "" && state_input != "") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && city_input != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && country_input == country) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && city_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && state_input != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && state_input != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && country_input != "default" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (end_date != "" && city_input != "" && state_input != "") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && city_input != "" && country_input != "default") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && country_input == country) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && city_input != "" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && state_input != "" && country_input != "default") {
+      if (end_date >= formatDate(datetime) && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && state_input != "" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (end_date != "" && country_input != "default" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (city_input != "" && state_input != "" && country_input != "default") {
+      if (city_input.toLowerCase() == city && state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    }
+      else if (city_input != "" && state_input != "" && shape_input != "default") {
+      if (city_input.toLowerCase() == city && state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }
+      else if (city_input != "" && country_input != "default" && shape_input != "default") {
+      if (city_input.toLowerCase() == city && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (state_input != "" && country_input != "default" && shape_input != "default") {
+      if (state_input.toLowerCase() == state && country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    }     
+      else if (start_date != "" && end_date != "") {
+      if (start_date <= formatDate(datetime) && end_date >= formatDate(datetime)) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && city_input != "") {
+      if (start_date <= formatDate(datetime) && city_input.toLowerCase() == city) {
+        writeData(i);
+      }
+    }
+      else if (start_date != "" && state_input != "") {
+      if (start_date <= formatDate(datetime) && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "" && country_input != "default") {
+      if (start_date <= formatDate(datetime) && country_input == country) {
+        writeData(i);
+      }
+    }  
+      else if (start_date != "" && shape_input != "default") {
+      if (start_date <= formatDate(datetime) && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && city_input != "") {
+      if (end_date >= formatDate(datetime) && city_input.toLowerCase() == city) {
+        writeData(i);
+      }
+    }
+      else if (end_date != "" && state_input != "") {
+      if (end_date >= formatDate(datetime) && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    } 
+      else if (end_date != "" && country_input != "default") {
+      if (end_date >= formatDate(datetime) && country_input == country) {
+        writeData(i);
+      }
+    }  
+      else if (end_date != "" && shape_input != "default") {
+      if (end_date >= formatDate(datetime) && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (city_input != "" && state_input != "") {
+      if (city_input.toLowerCase() == city && state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    }      
+      else if (city_input != "" && country_input != "default") {
+      if (city_input.toLowerCase() == city && country_input == country) {
+        writeData(i);
+      }
+    }  
+      else if (city_input != "" && shape_input != "default") {
+      if (city_input.toLowerCase() == city && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (state_input != "" && country_input != "default") {
+      if (state_input.toLowerCase() == state && country_input == country) {
+        writeData(i);
+      }
+    }  
+      else if (state_input != "" && shape_input != "default") {
+      if (state_input.toLowerCase() == state && shape_input == shape) {
+        writeData(i);
+      }
+    }  
+    else if (country_input != "default" && shape_input != "default") {
+      if (country_input == country && shape_input == shape) {
+        writeData(i);
+      }
+    } 
+      else if (start_date != "") {
+      if (start_date <= formatDate(datetime)) {
+        writeData(i);
+      }
+    }
+      else if (end_date != "") {
+      if (end_date >= formatDate(datetime)) {
+        writeData(i);
+      }
+    }
+      else if (city_input != "") {
+      if (city_input.toLowerCase() == city) {
+        writeData(i);
+      }
+    }   
+      else if (state_input != "") {
+      if (state_input.toLowerCase() == state) {
+        writeData(i);
+      }
+    }
+    else if (country_input != "default") {
+      if (country_input == country) {
+        writeData(i);
+      }
+    }    
+      else if (shape_input != "default") {
+      if (shape_input == shape) {
+        writeData(i);
+      }
+    } 
+    else {
       writeData(i);
     }
-  }
-}
-  else if (state_input != "") {
-    if (state_input.toLowerCase() == state) {
-      writeData(i);
     }
-  }
-  else if (country_input != "default") {
-    if (country_input == country) {
-      writeData(i);
-    }
-    }
-  else if (shape_input != "default") {
-    if (shape_input == shape) {
-      writeData(i);
-    }
-  }
-  else if (date_input != "") {
-    if (date_input <= formatDate(datetime)) {
-      writeData(i);
-  }
-  }
-}
 });
-
