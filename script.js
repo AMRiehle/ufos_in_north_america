@@ -385,3 +385,7 @@ d3.select("table").append("tbody")
     }
     }
 });
+
+d3.select("#reset").on("click", function(event) {
+  location.reload();
+})
