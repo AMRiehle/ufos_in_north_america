@@ -33,6 +33,12 @@ function renderTable() {
   for (var i = 0; i < filteredData.length; i++) {
     writeData(i);
   }
+  getTableLength()
+}
+
+function getTableLength() {
+  var x = document.getElementById("summary-table").rows.length;
+  console.log(x)
 }
 
 renderTable();
@@ -364,7 +370,7 @@ d3.select("table").append("tbody")
       if (city_input.toLowerCase() == city) {
         writeData(i);
       }
-    }   
+            }   
       else if (state_input != "") {
       if (state_input.toLowerCase() == state) {
         writeData(i);
@@ -389,3 +395,4 @@ d3.select("table").append("tbody")
 d3.select("#reset").on("click", function(event) {
   location.reload();
 })
+
