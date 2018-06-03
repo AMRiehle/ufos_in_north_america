@@ -414,13 +414,15 @@ d3.select("table").append("tbody")
   d3.select("ul").remove()
   d3.select("nav").append("ul").attr("class", "pagination")
   var numRecords = records.length;
-  if (numRecords > 8500) {
+  if (numRecords > 10000) {
     recordsPerPage = 250
   }
-  else if (numRecords > 4250) {
+  else if (numRecords > 5000) {
     recordsPerPage = 100
   }
-  else {recordsPerPage = 50}
+  else {
+    recordsPerPage = 50
+  }
   var numPages = Math.ceil(numRecords/recordsPerPage)
     for (var i = 0; i < recordsPerPage; i++) {
       writeData(records, i);
